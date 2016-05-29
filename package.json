@@ -9,7 +9,9 @@
     "posttest": "echo '=> Cleaning' && rm -rf .nyc_output coverage",
     "start": "echo '=> Starting' && node exec.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cosmiconfig": "^1.1.0"
+  },
   "devDependencies": {
     "ava": "^0.15.1",
     "babel-core": "^6.9.0",
@@ -58,12 +60,5 @@
     "url": "https://github.com/michael-ciniawsky/postcss-load-options/issues"
   },
   "homepage": "https://github.com/michael-ciniawsky/postcss-load-options#readme",
-  "license": "MIT",
-  "devDependencies": {
-    "ava": "^0.15.1",
-    "babel-core": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
-    "nyc": "^6.4.4",
-    "standard": "^7.1.1"
-  }
+  "license": "MIT"
 }
