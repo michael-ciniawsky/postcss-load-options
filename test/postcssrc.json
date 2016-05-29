@@ -1,7 +1,7 @@
 {
-  "parser": "sugarss",
+  "parser": "postcss-less",
   "plugins": {
-    "bem": {
+    "postcss-bem": {
       "defaultNamespace": "undefined",
       "style": "bem",
       "separators": {

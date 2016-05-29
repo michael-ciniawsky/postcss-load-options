@@ -1,7 +1,7 @@
 module.exports = {
-  parser: 'sugarss',
+  parser: 'postcss-scss',
   plugins: {
-    bem: {
+    'postcss-bem': {
       defaultNamespace: 'undefined',
       style: 'bem',
       separators: {

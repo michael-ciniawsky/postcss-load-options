@@ -5,11 +5,14 @@
   "description": "Autoload Options for PostCSS",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "postcss": "^5.0.21"
+  },
   "postcss": {
     "parser": "sugarss",
+    "map": "inline",
     "plugins": {
-      "bem": {
+      "postcss-bem": {
         "defaultNamespace": "undefined",
         "style": "bem",
         "separators": {
