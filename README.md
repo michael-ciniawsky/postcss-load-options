@@ -4,7 +4,7 @@
 [![DevDependencies][devdeps]][devdeps-url]
 [![Standard Code Style][style]][style-url]
 
-# PostCSS Load Options
+# PostCSS Load Options <img align="right" width="108" height="108" title="PostCSS" src="http://postcss.github.io/postcss/logo.svg" hspace="20">
 
 ## Status
 
@@ -13,12 +13,111 @@
 |  Master              | ![travis]                 | ![cover]                 |
 |  Release/v1.0.0      | ![travis-rel]             | ![cover-rel]             |
 
+## Install
+
+```bash
+npm i -D postcss-load-options
+```
+
+## Options
+#### package.json
+
+```json
+{
+ "dependencies": {
+   "sugarss": "^0.1.4"
+ },
+ "postcss": {
+   "parser": "sugarss",
+   "from": "src/app.sss",
+   "map": "inline",
+   "to": "app.css"
+  }
+}
+```
+
+#### postcss.config.js
+
+```js
+module.exports = {
+  parser: "sugarss",
+  from: 'src/app.sss',
+  map: 'inline',
+  to: 'app.css',
+  plugins: {
+    'postcss-import': null,
+    'postcss-nested': null,
+    'postcss-bem': {
+      style: 'bem',
+      separators: {
+        namespace: '-',
+        descendent: '__',
+        modifier: '--'
+      },
+      shortcuts: {
+        component: 'block',
+        descendent: 'elem',
+        modifier: 'mods'
+      }
+    }
+  }
+}
+```
+#### postcssrc.json
+
+```json
+{
+  "parser": "sugarss",
+  "from": "src/app.sss",
+  "map": "inline",
+  "to": "app.css"
+}
+```
+
+## Usage
+#### Default
+
+```js
+'use strict'
+
+const fs = require('fs')
+
+const postcss = require('postcss')
+const optionsrc = require('postcss-load-options')()
+
+const css = fs.readFileSync('./index.css', 'utf-8')
+
+postcssrc.then((options) => {
+  postcss([])
+    .process(css, options)
+    .then(result => console.log(result.css))
+}))
+```
+
+#### Custom
+
+```js
+'use strict'
+
+const fs = require('fs')
+
+const postcss = require('postcss')
+const optionsrc = require('postcss-load-options')('./path/to/postcssrc.json')
+
+const css = fs.readFileSync('./index.css', 'utf-8')
+
+postcssrc.then((options) => {
+  postcss([])
+    .process(css, options)
+    .then(result => console.log(result.css))
+}))
+```
 
 ## LICENSE [![License MIT][license]][license-url]
 
-> MIT License (MIT)
+> License (MIT)
 
->Copyright (c) 2016 Michael Ciniawsky
+> Copyright (c) 2016 Michael Ciniawsky
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
