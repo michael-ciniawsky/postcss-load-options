@@ -6,26 +6,13 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "postcss": "^5.0.21"
+    "postcss": "^5.0.21",
+    "sugarss": "^0.1.3"
   },
   "postcss": {
     "parser": "sugarss",
     "map": "inline",
-    "plugins": {
-      "postcss-bem": {
-        "defaultNamespace": "undefined",
-        "style": "bem",
-        "separators": {
-          "namespace": "-",
-          "descendent": "__",
-          "modifier": "--"
-        },
-        "shortcuts": {
-          "component": "block",
-          "descendent": "elem",
-          "modifier": "mods"
-        }
-      }
-    }
+    "from": "./fixtures/index.sss",
+    "to": "./results/index.sss.css"
   }
 }

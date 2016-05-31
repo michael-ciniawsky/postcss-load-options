@@ -1,19 +1,6 @@
 module.exports = {
-  parser: 'postcss-scss',
-  plugins: {
-    'postcss-bem': {
-      defaultNamespace: 'undefined',
-      style: 'bem',
-      separators: {
-        namespace: '-',
-        descendent: '__',
-        modifier: '--'
-      },
-      shortcuts: {
-        component: 'block',
-        descendent: 'elem',
-        modifier: 'mods'
-      }
-    }
-  }
+  parser: 'postcss-less',
+  map: 'inline',
+  from: './fixtures/index.less',
+  to: './results/index.less.css'
 }

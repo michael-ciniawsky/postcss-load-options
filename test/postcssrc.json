@@ -1,19 +1,6 @@
 {
-  "parser": "postcss-less",
-  "plugins": {
-    "postcss-bem": {
-      "defaultNamespace": "undefined",
-      "style": "bem",
-      "separators": {
-        "namespace": "-",
-        "descendent": "__",
-        "modifier": "--"
-      },
-      "shortcuts": {
-        "component": "block",
-        "descendent": "elem",
-        "modifier": "mods"
-      }
-    }
-  }
+  "parser": "postcss-scss",
+  "map": "inline",
+  "from": "./fixtures/index.scss",
+  "to": "./results/index.scss.css"
 }
