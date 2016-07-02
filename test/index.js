@@ -21,7 +21,7 @@ test('1 - Process SSS with default options', (t) => {
       .process(fixtures('index.sss'), options)
       .then(result => {
         writeFileSync('./expects/index.sss.css', result.css)
-        t.is(expected('./expect/index.sss.css'), result.css)
+        t.is(expected('index.sss.css'), result.css)
       })
   })
 })
