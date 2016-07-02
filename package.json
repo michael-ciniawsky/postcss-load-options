@@ -4,25 +4,25 @@
   "description": "Load Options for PostCSS",
   "main": "index.js",
   "scripts": {
-    "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage test/node_modules",
-    "pretest": "echo '=> Linting' && standard",
-    "test": "echo '=> Testing' && nyc ava 'test/index.js'",
-    "start": "echo '=> Starting' && node test/index.js"
+    "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage",
+    "pretest": "echo '=> Linting' && npm run clean && standard",
+    "test": "echo '=> Testing' && nyc ava 'test/*.js'",
+    "start": "echo '=> Starting' && sudo npm test"
   },
   "dependencies": {
     "cosmiconfig": "^1.1.0"
   },
   "devDependencies": {
-    "ava": "^0.15.1",
-    "babel-core": "^6.9.0",
+    "ava": "^0.15.2",
+    "babel-core": "^6.10.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-register": "^6.9.0",
     "coveralls": "^2.11.9",
-    "nyc": "^6.4.4",
+    "nyc": "^6.6.1",
     "postcss": "^5.0.21",
-    "postcss-less": "^0.12.0",
+    "postcss-less": "^0.13.0",
     "postcss-scss": "^0.1.8",
-    "standard": "^7.1.1",
+    "standard": "^7.1.2",
     "sugarss": "^0.1.3"
   },
   "ava": {
@@ -39,9 +39,6 @@
       ".js"
     ]
   },
-  "standard": {
-    "ignore": []
-  },
   "babel": {
     "env": {
       "development": {
@@ -54,8 +51,7 @@
   },
   "keywords": [
     "PostCSS",
-    "Autoload",
-    "Options"
+    "PostCSS Options"
   ],
   "author": {
     "name": "Michael Ciniawky",
