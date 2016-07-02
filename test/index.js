@@ -7,7 +7,7 @@
 const test = require('ava')
 
 const { join } = require('path')
-const { readFileSync, writeFileSync } = require('fs')
+const { readFileSync } = require('fs')
 
 const fixtures = (file) => readFileSync(join(__dirname, 'fixtures', file))
 const expected = (file) => readFileSync(join(__dirname, 'expects', file))
@@ -17,14 +17,12 @@ const optionsrc = require('..')
 
 test('1 - Load options with default config', (t) => {
   optionsrc().then((options) => {
-    console.log('\n', options)
     t.is(expected('options.default.js'), options)
   })
 })
 
 test('2 - Load options with custom config', (t) => {
   optionsrc('postcss.config.js').then((options) => {
-    console.log('\n', options)
     t.is(expected('options.custom.js'), options)
   })
 })
@@ -34,7 +32,6 @@ test('3 - Process SSS with default options', (t) => {
     postcss([])
       .process(fixtures('index.sss'), options)
       .then((result) => {
-        writeFileSync('./expects/index.css', result.css)
         t.is(expected('index.css'), result.css)
       })
   })
@@ -45,7 +42,6 @@ test('4 - Process SCSS with custom options', (t) => {
     postcss([])
       .process(fixtures('index.css'), options)
       .then((result) => {
-        writeFileSync('./expects/custom.css', result.css)
         t.is(expected('custom.css'), result.css)
       })
   })
