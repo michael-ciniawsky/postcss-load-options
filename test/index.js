@@ -13,48 +13,40 @@ const fixtures = (file) => readFileSync(join(__dirname, 'fixtures', file))
 const expected = (file) => readFileSync(join(__dirname, 'expects', file))
 
 const postcss = require('postcss')
-const optionsrc = require('../')
+const optionsrc = require('..')
 
-test('1 - Process SSS with default options', (t) => {
+test('1 - Load options with default config', (t) => {
+  optionsrc().then((options) => {
+    console.log('\n', options)
+    t.is(expected('options.default.js'), options)
+  })
+})
+
+test('2 - Load options with custom config', (t) => {
+  optionsrc('postcss.config.js').then((options) => {
+    console.log('\n', options)
+    t.is(expected('options.custom.js'), options)
+  })
+})
+
+test('3 - Process SSS with default options', (t) => {
   optionsrc().then((options) => {
     postcss([])
       .process(fixtures('index.sss'), options)
-      .then(result => {
-        writeFileSync('./expects/index.sss.css', result.css)
-        t.is(expected('index.sss.css'), result.css)
+      .then((result) => {
+        writeFileSync('./expects/index.css', result.css)
+        t.is(expected('index.css'), result.css)
       })
   })
 })
 
-test('2 - Process SCSS with custom options', (t) => {
-  optionsrc('postcssrc.json').then((options) => {
-    postcss([])
-      .process(fixtures('index.scss'), options)
-      .then(result => {
-        writeFileSync('./expects/index.scss.css', result.css)
-        t.is(expected('index.scss.css'), result.css)
-      })
-  })
-})
-
-test('3 - Process LESS with custom options', (t) => {
+test('4 - Process SCSS with custom options', (t) => {
   optionsrc('postcss.config.js').then((options) => {
     postcss([])
-      .process(fixtures('index.less'), options)
-      .then(result => {
-        writeFileSync('./expects/index.less.css', result.css)
-        t.is(expected('index.less.css'))
-      })
-  })
-})
-
-test.skip('4 - Process CSS-in-JS with custom options', (t) => {
-  optionsrc('postcss.custom.js').then((options) => {
-    postcss([])
-      .process(fixtures('index.js'), options)
-      .then(result => {
-        writeFileSync('./expects/index.js.css', result.css)
-        t.is(expected('index.js.css'))
+      .process(fixtures('index.css'), options)
+      .then((result) => {
+        writeFileSync('./expects/custom.css', result.css)
+        t.is(expected('custom.css'), result.css)
       })
   })
 })

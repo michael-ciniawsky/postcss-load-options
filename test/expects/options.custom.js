@@ -1,5 +1,5 @@
 module.exports = {
-  parser: 'postcss-scss',
+  parser: require('postcss-scss'),
   map: 'inline',
   from: './fixtures/index.css',
   to: './expects/custom.css'

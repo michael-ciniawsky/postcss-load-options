@@ -1,6 +1,6 @@
 {
   "parser": "postcss-scss",
   "map": "inline",
-  "from": "./fixtures/index.scss",
-  "to": "./results/index.scss.css"
+  "from": "./fixtures/index.css",
+  "to": "./expects/custom.css"
 }
