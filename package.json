@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage",
     "pretest": "echo '=> Linting' && npm run clean && standard",
-    "test": "echo '=> Testing' && nyc ava 'test/*.js'",
+    "test": "echo '=> Testing' && nyc ava 'test/index.js'",
     "start": "echo '=> Starting' && sudo npm test"
   },
   "dependencies": {
