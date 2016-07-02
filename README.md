@@ -67,7 +67,7 @@ const { readFileSync } = require('fs')
 const postcss = require('postcss')
 const optionsrc = require('postcss-load-options')()
 
-const css =  readFileSync('./index.css', 'utf-8')
+const css =  readFileSync('./index.css', 'utf8')
 
 optionsrc.then((options) => {
   postcss([])
@@ -86,9 +86,9 @@ const { readFileSync } = require('fs')
 const postcss = require('postcss')
 const optionsrc = require('postcss-load-options')('./path/to/postcssrc.json')
 
-const css = readFileSync('./index.css', 'utf-8')
+const css = readFileSync('./index.css', 'utf8')
 
-postcssrc.then((options) => {
+optionsrc.then((options) => {
   postcss([])
     .process(css, options)
     .then(result => console.log(result.css))
