@@ -1,17 +1,16 @@
 [![NPM][npm]][npm-url]
-[![Node][node]][node-url]
-[![Dependencies][deps]][deps-url]
-[![DevDependencies][devdeps]][devdeps-url]
+[![Deps][deps]][deps-url]
+[![Tests][travis]][travis-url]
+[![Coverage][cover]][cover-url]
 [![Standard Code Style][style]][style-url]
 
-# PostCSS Load Options <img align="right" width="108" height="108" title="PostCSS" src="http://postcss.github.io/postcss/logo.svg" hspace="20">
-
-## Status
-
-| Branch               | Build                     | Coverage                 |
-|:--------------------:|:-------------------------:|:------------------------:|
-|  Master              | ![travis]                 | ![cover]                 |
-|  Release/v1.0.0      | ![travis-rel]             | ![cover-rel]             |
+<div align="center">
+  <a href="https://github.com/postcss/postcss">
+    <img width="108" height="108" title="PostCSS"           src="http://postcss.github.io/postcss/logo.svg" hspace="20">
+  </a>
+  <h1>Load Options</h1>
+  <p>Autoload Options for PostCSS<p>
+</div>
 
 ## Install
 
@@ -29,7 +28,7 @@ npm i -D postcss-load-options
  },
  "postcss": {
    "parser": "sugarss",
-   "from": "src/app.sss",
+   "from": "app.sss",
    "map": "inline",
    "to": "app.css"
   }
@@ -41,7 +40,7 @@ npm i -D postcss-load-options
 ```js
 module.exports = {
   parser: "sugarss",
-  from: 'src/app.sss',
+  from: 'app.sss',
   map: 'inline',
   to: 'app.css'
 }
@@ -51,7 +50,7 @@ module.exports = {
 ```json
 {
   "parser": "sugarss",
-  "from": "src/app.sss",
+  "from": "app.sss",
   "map": "inline",
   "to": "app.css"
 }
@@ -63,14 +62,14 @@ module.exports = {
 ```js
 'use strict'
 
-const fs = require('fs')
+const { readFileSync } = require('fs')
 
 const postcss = require('postcss')
 const optionsrc = require('postcss-load-options')()
 
-const css = fs.readFileSync('./index.css', 'utf-8')
+const css =  readFileSync('./index.css', 'utf-8')
 
-postcssrc.then((options) => {
+optionsrc.then((options) => {
   postcss([])
     .process(css, options)
     .then(result => console.log(result.css))
@@ -82,12 +81,12 @@ postcssrc.then((options) => {
 ```js
 'use strict'
 
-const fs = require('fs')
+const { readFileSync } = require('fs')
 
 const postcss = require('postcss')
 const optionsrc = require('postcss-load-options')('./path/to/postcssrc.json')
 
-const css = fs.readFileSync('./index.css', 'utf-8')
+const css = readFileSync('./index.css', 'utf-8')
 
 postcssrc.then((options) => {
   postcss([])
@@ -96,7 +95,7 @@ postcssrc.then((options) => {
 }))
 ```
 
-## LICENSE [![License MIT][license]][license-url]
+## LICENSE
 
 > License (MIT)
 
@@ -123,14 +122,8 @@ SOFTWARE.
 [npm]: https://img.shields.io/npm/v/postcss-load-options.svg
 [npm-url]: https://npmjs.com/package/postcss-load-options
 
-[node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
-[node-url]: https://nodejs.org
-
 [deps]: https://david-dm.org/michael-ciniawsky/postcss-load-options.svg
 [deps-url]: https://david-dm.org/michael-ciniawsky/postcss-load-options
-
-[devdeps]: https://david-dm.org/michael-ciniawsky/postcss-load-options/dev-status.svg
-[devdeps-url]: https://david-dm.org/michael-ciniawsky/postcss-load-options#info=devDependencies
 
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
@@ -138,20 +131,5 @@ SOFTWARE.
 [travis]: http://img.shields.io/travis/michael-ciniawsky/postcss-load-options.svg
 [travis-url]: https://travis-ci.org/michael-ciniawsky/postcss-load-options
 
-[travis-rel]: http://img.shields.io/travis/michael-ciniawsky/postcss-load-options.svg?branch=release/1.0.0
-[travis-rel-url]:https://travis-ci.org/michael-ciniawsky/postcss-load-options?branch=release/1.0.0
-
-[travis-dev]: http://img.shields.io/travis/michael-ciniawsky/postcss-load-options.svg?branch=develop
-[travis-dev-url]: https://travis-ci.org/michael-ciniawsky/postcss-load-options?branch=develop
-
 [cover]: https://coveralls.io/repos/github/michael-ciniawsky/postcss-load-options/badge.svg?branch=master
 [cover-url]: https://coveralls.io/github/michael-ciniawsky/postcss-load-options?branch=master
-
-[cover-rel]: https://coveralls.io/repos/github/michael-ciniawsky/postcss-load-options/badge.svg?branch=release/1.0.0
-[cover-rel-url]: https://coveralls.io/github/michael-ciniawsky/postcss-load-options?branch=release/1.0.0
-
-[cover-dev]: https://coveralls.io/repos/github/michael-ciniawsk/postcss-load-options/badge.svg?branch=develop
-[cover-dev-url]: https://coveralls.io/github/michael-ciniawsky/postcss-load-options?branch=develop
-
-[license]: https://img.shields.io/github/license/michael-ciniawsky/postcss-load-options.svg
-[license-url]: https://raw.githubusercontent.com/michael-ciniawsky/postcss-load-options/master/LICENSE
