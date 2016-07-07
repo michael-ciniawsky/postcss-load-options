@@ -1,8 +1,8 @@
 {
   "name": "postcss-load-options",
-  "version": "1.0.0-alpha2",
-  "description": "Load Options for PostCSS",
-  "engines": { "node": ">=4" },
+  "version": "1.0.0-alpha3",
+  "description": "Autoload Options for PostCSS",
+  "engines": {"node": ">=4"},
   "main": "index.js",
   "scripts": {
     "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage",
