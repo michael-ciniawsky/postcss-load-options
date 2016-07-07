@@ -15,13 +15,13 @@ const expected = (file) => readFileSync(join(__dirname, 'expects', file))
 const postcss = require('postcss')
 const optionsrc = require('..')
 
-test('1 - Load options with default config', (t) => {
+test('1 - Load with default options', (t) => {
   optionsrc().then((options) => {
     t.is(expected('options.default.js'), options)
   })
 })
 
-test('2 - Load options with custom config', (t) => {
+test('2 - Load with custom options', (t) => {
   optionsrc('postcss.config.js').then((options) => {
     t.is(expected('options.custom.js'), options)
   })
