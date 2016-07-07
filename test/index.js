@@ -4,44 +4,49 @@
 
 'use strict'
 
-const test = require('ava')
+var test = require('ava')
 
-const { join } = require('path')
-const { readFileSync } = require('fs')
+var fs = require('fs')
+var path = require('path')
 
-const fixtures = (file) => readFileSync(join(__dirname, 'fixtures', file))
-const expected = (file) => readFileSync(join(__dirname, 'expects', file))
+function fixtures (file) {
+  fs.readFileSync(path.join(__dirname, 'fixtures', file))
+}
 
-const postcss = require('postcss')
-const optionsrc = require('..')
+function expected (file) {
+  fs.readFileSync(path.join(__dirname, 'expects', file))
+}
 
-test('1 - Load with default options', (t) => {
-  optionsrc().then((options) => {
+var postcss = require('postcss')
+var optionsrc = require('..')
+
+test('1 - Load with default options', function (t) {
+  optionsrc().then(function (options) {
     t.is(expected('options.default.js'), options)
   })
 })
 
-test('2 - Load with custom options', (t) => {
-  optionsrc('postcss.config.js').then((options) => {
+test('2 - Load with custom options', function (t) {
+  optionsrc('postcss.config.js').then(function (options) {
     t.is(expected('options.custom.js'), options)
   })
 })
 
-test('3 - Process SSS with default options', (t) => {
-  optionsrc().then((options) => {
+test('3 - Process SSS with default options', function (t) {
+  optionsrc().then(function (options) {
     postcss([])
       .process(fixtures('index.sss'), options)
-      .then((result) => {
+      .then(function (result) {
         t.is(expected('index.css'), result.css)
       })
   })
 })
 
-test('4 - Process SCSS with custom options', (t) => {
-  optionsrc('postcss.config.js').then((options) => {
+test('4 - Process SCSS with custom options', function (t) {
+  optionsrc('postcss.config.js').then(function (options) {
     postcss([])
       .process(fixtures('index.css'), options)
-      .then((result) => {
+      .then(function (result) {
         t.is(expected('custom.css'), result.css)
       })
   })
