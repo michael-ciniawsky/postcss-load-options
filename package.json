@@ -1,6 +1,6 @@
 {
   "name": "postcss-load-options",
-  "version": "1.0.0-alpha3",
+  "version": "1.0.0-alpha4",
   "description": "Autoload Options for PostCSS",
   "engines": {"node": ">=4"},
   "main": "index.js",
