@@ -14,6 +14,6 @@ module.exports = function (options) {
       console.log(error)
     })
     .then(function (result) {
-      loadOptions(result.config, options)
+      return loadOptions(result.config, options)
     })
 }
