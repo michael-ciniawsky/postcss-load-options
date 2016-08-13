@@ -2,7 +2,9 @@
   "name": "postcss-load-options",
   "version": "1.0.0-alpha4",
   "description": "Autoload Options for PostCSS",
-  "engines": {"node": ">=4"},
+  "engines": {
+    "node": ">=4"
+  },
   "main": "index.js",
   "scripts": {
     "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage",
@@ -16,7 +18,7 @@
   "devDependencies": {
     "ava": "^0.15.2",
     "coveralls": "^2.11.9",
-    "nyc": "^6.6.1",
+    "nyc": "^8.0.0",
     "postcss": "^5.0.21",
     "postcss-scss": "^0.1.8",
     "standard": "^7.1.2",
