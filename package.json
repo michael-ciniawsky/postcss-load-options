@@ -13,7 +13,7 @@
     "start": "echo '=> Starting' && sudo npm test"
   },
   "dependencies": {
-    "cosmiconfig": "^1.1.0"
+    "cosmiconfig": "^2.0.0"
   },
   "devDependencies": {
     "ava": "^0.16.0",
