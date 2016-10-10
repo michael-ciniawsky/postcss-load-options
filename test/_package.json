@@ -1,0 +1,11 @@
+{
+  "name": "postcss-options",
+  "private": true,
+  "version": "1.0.0",
+  "postcss": {
+    "parser": "sugarss",
+    "map": false,
+    "from": "./fixtures/index.sss",
+    "to": "./expect/index.css"
+  }
+}

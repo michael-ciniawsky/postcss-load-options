@@ -14,25 +14,33 @@ function fixtures (file) {
 }
 
 function expected (file) {
-  fs.readFileSync(path.join(__dirname, 'expects', file))
+  fs.readFileSync(path.join(__dirname, 'expect', file))
 }
 
 var postcss = require('postcss')
 var optionsrc = require('..')
 
-test('1 - Load with default options', function (t) {
+test('Load Options', function (t) {
   optionsrc().then(function (options) {
-    t.is(expected('options.default.js'), options)
+    t.is(options.parser, require('sugarss'))
+    t.is(options.map, false)
+    t.is(options.from, './fixtures/index.css')
+    t.is(options.to, './expect/index.css')
   })
 })
 
-test('2 - Load with custom options', function (t) {
-  optionsrc('postcss.config.js').then(function (options) {
-    t.is(expected('options.custom.js'), options)
+test('Load Options with Context', function (t) {
+  var ctx = { env: 'dev', map: 'inline' }
+
+  optionsrc(ctx).then(function (options) {
+    t.is(options.parser, require('sugarss'))
+    t.is(options.map, 'inline')
+    t.is(options.from, './fixtures/index.css')
+    t.is(options.to, './expect/index.css')
   })
 })
 
-test('3 - Process SSS with default options', function (t) {
+test('Process SSS', function (t) {
   optionsrc().then(function (options) {
     postcss([])
       .process(fixtures('index.sss'), options)
@@ -42,12 +50,14 @@ test('3 - Process SSS with default options', function (t) {
   })
 })
 
-test('4 - Process SCSS with custom options', function (t) {
-  optionsrc('postcss.config.js').then(function (options) {
+test('Process CSS', function (t) {
+  // var ctx = { parser: null }
+
+  optionsrc().then(function (options) {
     postcss([])
       .process(fixtures('index.css'), options)
       .then(function (result) {
-        t.is(expected('custom.css'), result.css)
+        t.is(expected('index.css'), result.css)
       })
   })
 })

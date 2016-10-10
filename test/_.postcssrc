@@ -1,0 +1,6 @@
+{
+  "parser": "sugarss",
+  "map": false,
+  "from": "./fixtures/index.css",
+  "to": "./expect/index.css"
+}
