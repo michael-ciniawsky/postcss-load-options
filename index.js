@@ -5,9 +5,8 @@
 'use strict'
 
 var config = require('cosmiconfig')
-var assign = require('object-assign')
 
-var loadOptions = require('./lib/loadOptions')
+var loadOptions = require('./lib/options')
 
 /**
  * @author Michael Ciniawsky (@michael-ciniawsky) <michael.ciniawsky@gmail.com>
@@ -18,41 +17,46 @@ var loadOptions = require('./lib/loadOptions')
  * @version 1.0.0
  *
  * @requires cosmiconfig
- * @requires object-assign
- * @requires lib/loadOptions
+ * @requires lib/options
  *
  * @method options
  *
  * @param  {Object} ctx Context
- * @param  {String} path Directory to search for config file
- * @param  {Object} options cosmiconfig Options
+ * @param  {String} path Directory
+ * @param  {Object} options Options
  * @return {Object} options PostCSS Options
  */
-module.exports = function options (ctx, path, options) {
+module.exports = function optionsrc (ctx, path, options) {
+  const defaults = {
+    cwd: process.cwd(),
+    env: process.env.NODE_ENV
+  }
+
+  ctx = Object.assign(defaults, ctx) || defaults
   path = path || process.cwd()
   options = options || {}
 
   return config('postcss', options)
     .load(path)
-    .then(function (result) {
+    .then((result) => {
       result = result.config || {}
       return result
     })
-    .then(function (options) {
+    .then((options) => {
       if (typeof options === 'function') {
-        options = ctx ? options(ctx) : options()
+        options = options(ctx)
       }
 
       if (typeof options === 'object') {
-        options = ctx ? assign(options, ctx) : options
+        options = Object.assign(options, ctx)
       }
 
       return options
     })
-    .then(function (options) {
+    .then((options) => {
       return loadOptions(options)
     })
-    .catch(function (error) {
-      console.log(error)
+    .catch(function (err) {
+      console.log(err)
     })
 }
