@@ -24,7 +24,7 @@ npm i -D postcss-load-options
 
 <h2 align="center">Options</h2>
 
-### package.json
+### `package.json`
 
 ```json
 {
@@ -40,7 +40,7 @@ npm i -D postcss-load-options
 }
 ```
 
-### .postcssrc
+### `.postcssrc`
 
 ```json
 {
@@ -51,12 +51,12 @@ npm i -D postcss-load-options
 }
 ```
 
-### postcss.config.js
+### `postcss.config.js`
 
 ```js
 module.exports = (ctx) => {
   parser: ctx.parser || 'sugarss',
-  map: ctx.env === 'dev' ? ctx.map || 'false',
+  map: ctx.env === 'development' ? ctx.map || 'false',
   from: ctx.from || 'src/app.sss',
   to: ctx.to || 'dest/app.css'
 }
@@ -68,36 +68,16 @@ module.exports = (ctx) => {
 const { readFileSync } = require('fs')
 
 const postcss = require('postcss')
-const optionsrc = require('postcss-load-options')()
-
-const css =  readFileSync('index.css', 'utf8')
-
-optionsrc.then((options) => {
-  postcss([])
-    .process(css, options)
-    .then(result => console.log(result.css))
-}))
-```
-
-### Context
-
-```js
-const { readFileSync } = require('fs')
-
-const postcss = require('postcss')
 const optionsrc = require('postcss-load-options')
 
-const css = readFileSync('index.css', 'utf8')
+const sss =  readFileSync('index.sss', 'utf8')
 
-const ctx = {
-  env: 'dev',
-  map: 'inline'
-}
+const ctx = { map: 'inline' }
 
 optionsrc(ctx).then((options) => {
-  postcss([])
-    .process(css, options)
-    .then(result => console.log(result.css))
+  postcss()
+    .process(sss, options)
+    .then(({ css }) => console.log(css))
 }))
 ```
 
