@@ -1,5 +1,6 @@
 {
   "parser": "sugarss",
+  "syntax": "postcss-scss",
   "map": false,
   "from": "./fixtures/index.css",
   "to": "./expect/index.css"

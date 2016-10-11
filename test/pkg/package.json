@@ -1,9 +1,8 @@
 {
   "name": "postcss-options",
-  "private": true,
-  "version": "1.0.0",
   "postcss": {
     "parser": "sugarss",
+    "syntax": "postcss-scss",
     "map": false,
     "from": "./fixtures/index.sss",
     "to": "./expect/index.css"
