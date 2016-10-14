@@ -21,48 +21,124 @@
 ```bash
 npm i -D postcss-load-options
 ```
-
-<h2 align="center">Options</h2>
+<h2 align="center">Usage</h2>
 
 ### `package.json`
 
+Create **`postcss`** section in your projects **`package.json`**.
+
+```
+App
+  |– client
+  |– public
+  |
+  |- package.json
+```
+
 ```json
 {
- "dependencies": {
-   "sugarss": "^0.1.4"
- },
- "postcss": {
-   "parser": "sugarss",
-   "map": false,
-   "from": "src/app.sss",
-   "to": "dest/app.css"
+  "dependencies": {
+    "sugarss": "0.2.0"
+  },
+  "postcss": {
+    "parser": "sugarss",
+    "map": false,
+    "from": "path/to/src/file.css",
+    "to": "path/to/dest/file.css"
   }
 }
 ```
 
 ### `.postcssrc`
 
+Create a **`.postcssrc`** file.
+
+```
+App
+  |– client
+  |– public
+  |
+  |-.postcssrc
+  |- package.json
+```
+
 ```json
 {
   "parser": "sugarss",
   "map": false,
-  "from": "src/app.sss",
-  "to": "dest/app.css"
+  "from": "path/to/src/file.css",
+  "to": "path/to/dest/file.css"
 }
 ```
 
 ### `postcss.config.js`
 
+Create a **`postcss.config.js`** file.
+
+```
+App
+  |– client
+  |– public
+  |
+  |- postcss.config.js
+  |- package.json
+```
+
 ```js
 module.exports = (ctx) => {
-  parser: ctx.parser || 'sugarss',
-  map: ctx.env === 'development' ? ctx.map || 'false',
-  from: ctx.from || 'src/app.sss',
-  to: ctx.to || 'dest/app.css'
+  return {
+    parser: ctx.sugar ? 'sugarss' : false,
+    map: ctx.env === 'development' ? ctx.map || false,
+    from: 'path/to/src/file.css',
+    to: 'path/to/dest/file.css'
+  }
 }
 ```
 
-<h2 align="center">Usage</h2>
+<h2 align="center">Options</h2>
+
+**`parser`**:
+
+```js
+'parser': 'sugarss'
+```
+
+**`syntax`**:
+
+```js
+'syntax': 'postcss-scss'
+```
+**`stringifier`**:
+
+```js
+'stringifier': 'midas'
+```
+
+[**`map`**:](https://github.com/postcss/postcss/blob/master/docs/source-maps.md)
+
+```js
+'map': 'inline'
+```
+
+**`from`**:
+
+```js
+from: 'path/to/dest/file.css'
+```
+
+**`to`**:
+
+```js
+to: 'path/to/dest/file.css'
+```
+
+### Context
+
+When using a function `(postcss.config.js)`, it is possible to pass context to `postcss-load-options`, which will be evaluated before loading your options. By default `ctx.env (process.env.NODE_ENV)` and `ctx.cwd (process.cwd())` are available.
+
+<h2 align="center">Example</h2>
+
+### <img width="80" height="80" src="https://worldvectorlogo.com/logos/nodejs-icon.svg">
 
 ```js
 const { readFileSync } = require('fs')
@@ -72,7 +148,7 @@ const optionsrc = require('postcss-load-options')
 
 const sss =  readFileSync('index.sss', 'utf8')
 
-const ctx = { map: 'inline' }
+const ctx = { sugar: true,  map: 'inline' }
 
 optionsrc(ctx).then((options) => {
   postcss()
