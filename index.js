@@ -5,6 +5,7 @@
 'use strict'
 
 var config = require('cosmiconfig')
+var assign = require('object-assign')
 
 var loadOptions = require('./lib/options')
 
@@ -17,9 +18,10 @@ var loadOptions = require('./lib/options')
  * @version 1.0.0
  *
  * @requires cosmiconfig
+ * @requires object-assign
  * @requires lib/options
  *
- * @method options
+ * @method optionsrc
  *
  * @param  {Object} ctx Context
  * @param  {String} path Directory
@@ -27,33 +29,35 @@ var loadOptions = require('./lib/options')
  * @return {Object} options PostCSS Options
  */
 module.exports = function optionsrc (ctx, path, options) {
-  const defaults = {
-    cwd: process.cwd(),
-    env: process.env.NODE_ENV
-  }
+  const defaults = { cwd: process.cwd(), env: process.env.NODE_ENV }
 
-  ctx = Object.assign(defaults, ctx) || defaults
+  ctx = assign(defaults, ctx) || defaults
   path = path || process.cwd()
   options = options || {}
 
   return config('postcss', options)
     .load(path)
-    .then((result) => {
-      result = result.config || {}
+    .then(function (result) {
+      if (result === undefined) {
+        console.log(
+          'PostCSS Options could not be loaded. Please check your config'
+        )
+      }
+      result = result === undefined ? { config: {} } : result
       return result
     })
-    .then((options) => {
+    .then(function (options) {
       if (typeof options === 'function') {
         options = options(ctx)
       }
 
       if (typeof options === 'object') {
-        options = Object.assign(options, ctx)
+        options = assign(options, ctx)
       }
 
       return options
     })
-    .then((options) => {
+    .then(function (options) {
       return loadOptions(options)
     })
     .catch(function (err) {
