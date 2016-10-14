@@ -1,21 +1,21 @@
 ## Functions
 
 <dl>
-<dt><a href="#options">options(ctx, path, options)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#optionsrc">optionsrc(ctx, path, options)</a> ⇒ <code>Object</code></dt>
 <dd><p>Autoload Options for PostCSS</p>
 </dd>
 <dt><a href="#options">options(options)</a> ⇒ <code>Object</code></dt>
 <dd></dd>
 </dl>
 
-<a name="options"></a>
+<a name="optionsrc"></a>
 
-## options(ctx, path, options) ⇒ <code>Object</code>
+## optionsrc(ctx, path, options) ⇒ <code>Object</code>
 Autoload Options for PostCSS
 
 **Kind**: global function  
 **Returns**: <code>Object</code> - options PostCSS Options  
-**Requires**: <code>module:cosmiconfig</code>, <code>module:lib/options</code>  
+**Requires**: <code>module:cosmiconfig</code>, <code>module:object-assign</code>, <code>module:lib/options</code>  
 **Version**: 1.0.0  
 **Author:** Michael Ciniawsky (@michael-ciniawsky) <michael.ciniawsky@gmail.com>  
 
