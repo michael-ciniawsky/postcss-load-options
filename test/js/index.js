@@ -4,22 +4,26 @@
 
 'use strict'
 
-const test = require('ava')
+var test = require('ava')
 
-const read = require('fs').readFileSync
-const join = require('path').join
+var read = require('fs').readFileSync
+var join = require('path').join
 
-const fixture = (file) => read(join(__dirname, 'fixtures', file))
+var fixture = function (file) {
+  return read(join(__dirname, 'fixtures', file))
+}
 
-const expect = (file) => read(join(__dirname, 'expect', file))
+var expect = function (file) {
+  return read(join(__dirname, 'expect', file))
+}
 
-const postcss = require('postcss')
-const optionsrc = require('../..')
+var postcss = require('postcss')
+var optionsrc = require('../..')
 
 test('postcss.config.js - {Function} - Load Options', function (t) {
-  const ctx = { map: 'inline' }
+  var ctx = { map: 'inline' }
 
-  optionsrc(ctx).then((options) => {
+  optionsrc(ctx).then(function (options) {
     t.is(options.parser, require('sugarss'))
     t.is(options.syntax, require('postcss-scss'))
     t.is(options.map, 'inline')
@@ -32,17 +36,17 @@ test('postcss.config.js - {Function} - Process SSS', function (t) {
   optionsrc().then(function (options) {
     postcss([])
       .process(fixture('index.sss'), options)
-      .then((result) => {
+      .then(function (result) {
         t.is(expect('index.css'), result.css)
       })
   })
 })
 
-test('postcss.config.js - {Function} - Process CSS', (t) => {
-  optionsrc().then((options) => {
+test('postcss.config.js - {Function} - Process CSS', function (t) {
+  optionsrc().then(function (options) {
     postcss([])
       .process(fixture('index.css'), options)
-      .then((result) => {
+      .then(function (result) {
         t.is(expect('index.css'), result.css)
       })
   })
