@@ -29,7 +29,7 @@ var loadOptions = require('./lib/options')
  * @return {Object} options PostCSS Options
  */
 module.exports = function optionsrc (ctx, path, options) {
-  const defaults = { cwd: process.cwd(), env: process.env.NODE_ENV }
+  var defaults = { cwd: process.cwd(), env: process.env.NODE_ENV }
 
   ctx = assign(defaults, ctx) || defaults
   path = path || process.cwd()
@@ -40,7 +40,7 @@ module.exports = function optionsrc (ctx, path, options) {
     .then(function (result) {
       if (result === undefined) {
         console.log(
-          'PostCSS Options could not be loaded. Please check your config'
+          'PostCSS Options could not be loaded. Please check your PostCSS Config.'
         )
       }
       result = result === undefined ? { config: {} } : result
