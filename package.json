@@ -2,7 +2,7 @@
   "name": "postcss-load-options",
   "version": "1.0.2",
   "description": "Autoload Options for PostCSS",
-  "engines": { "node": ">=4", "npm": ">=3" },
+  "engines": { "node": ">=0.12", "npm": ">=3" },
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf .nyc_output coverage jsdoc-api dmd",
