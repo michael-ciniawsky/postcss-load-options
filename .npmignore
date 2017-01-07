@@ -4,11 +4,6 @@
 .gitignore
 .editorconfig
 
-CHANGELOG.md
-CONTRIBUTING.md
-logo.svg
-README.md
-
 npm-debug.log
 
 # DIRECTORIES
