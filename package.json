@@ -1,6 +1,6 @@
 {
   "name": "postcss-load-options",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Autoload Options for PostCSS",
   "engines": { "node": ">=0.12" },
   "main": "index.js",
@@ -8,7 +8,7 @@
     "clean": "rm -rf .nyc_output coverage jsdoc-api dmd",
     "lint": "standard",
     "test": "nyc ava -v test/pkg/index.js test/rc/index.js test/js/index.js test/err/index.js",
-    "logs": "standard-changelog > CHANGELOG.md",
+    "logs": "standard-changelog CHANGELOG.md -w",
     "docs": "jsdoc2md index.js lib/options.js > INDEX.md",
     "start": "sudo npm run clean && npm run lint && sudo npm test"
   },
