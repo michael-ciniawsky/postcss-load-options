@@ -4,7 +4,8 @@
     "parser": "sugarss",
     "syntax": "postcss-scss",
     "map": false,
-    "from": "./fixtures/index.sss",
-    "to": "./expect/index.css"
+    "from": "./test/pkg/fixtures/index.sss",
+    "to": "./test/pkg/expect/index.css",
+    "plugins": {}
   }
 }
