@@ -19,7 +19,7 @@
   "devDependencies": {
     "ava": "^0.18.0",
     "coveralls": "^2.11.15",
-    "jsdoc-to-markdown": "^2.0.0",
+    "jsdoc-to-markdown": "^3.0.0",
     "midas": "^2.0.3",
     "nyc": "^10.0.0",
     "postcss": "^5.2.8",
