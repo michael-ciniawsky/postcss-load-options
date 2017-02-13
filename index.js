@@ -17,7 +17,7 @@ var loadOptions = require('./lib/options')
  *
  *
  * @module postcss-load-options
- * @version 1.0.0
+ * @version 1.2.0
  *
  * @requires cosmiconfig
  * @requires object-assign
@@ -35,7 +35,7 @@ module.exports = function optionsrc (ctx, path, options) {
 
   path = path ? resolve(path) : process.cwd()
 
-  options = assign({}, options)
+  options = assign({ rcExtensions: true }, options)
 
   if (!ctx.env) process.env.NODE_ENV = 'development'
 
