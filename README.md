@@ -57,10 +57,11 @@ App
   |– client
   |– public
   |
-  |-.postcssrc
+  |- (.postcssrc|.postcssrc.json|.postcssrc.yaml)
   |- package.json
 ```
 
+**`JSON`**
 ```json
 {
   "parser": "sugarss",
@@ -70,16 +71,24 @@ App
 }
 ```
 
-### `postcss.config.js`
+**`YAML`**
+```yaml
+parser: sugarss
+map: false
+from: "/path/to/src.sss"
+to: "/path/to/dest.css"
+```
 
-Create a **`postcss.config.js`** file.
+### `postcss.config.js` or `.postcssrc.js`
+
+You may need some JavaScript logic to generate your config. For this case you can use a file named **`postcss.config.js`** or **`.postcssrc.js`**.
 
 ```
 App
   |– client
   |– public
   |
-  |- postcss.config.js
+  |- (postcss.config.js|.postcssrc.js)
   |- package.json
 ```
 
