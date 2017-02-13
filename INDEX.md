@@ -16,7 +16,7 @@ Autoload Options for PostCSS
 **Kind**: global function  
 **Returns**: <code>Object</code> - options PostCSS Options  
 **Requires**: <code>module:cosmiconfig</code>, <code>module:object-assign</code>, <code>module:lib/options</code>  
-**Version**: 1.0.0  
+**Version**: 1.2.0  
 **Author:** Michael Ciniawsky (@michael-ciniawsky) <michael.ciniawsky@gmail.com>  
 
 | Param | Type | Description |
