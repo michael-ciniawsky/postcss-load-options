@@ -25,7 +25,7 @@
     "postcss": "^5.2.12",
     "postcss-scss": "^0.4.0",
     "standard": "^9.0.0",
-    "standard-changelog": "0.0.1",
+    "standard-changelog": "1.0.0",
     "sugarss": "^0.2.0"
   },
   "files": [
