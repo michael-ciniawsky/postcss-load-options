@@ -23,7 +23,7 @@
     "midas": "^2.0.3",
     "nyc": "^10.1.0",
     "postcss": "^5.2.12",
-    "postcss-scss": "^0.4.0",
+    "postcss-scss": "^1.0.0",
     "standard": "^9.0.0",
     "standard-changelog": "1.0.1",
     "sugarss": "^0.2.0"
