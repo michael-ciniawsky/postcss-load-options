@@ -17,15 +17,15 @@
     "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "ava": "^0.21.0",
+    "ava": "^0.22.0",
     "coveralls": "^2.11.16",
     "jsdoc-to-markdown": "^3.0.0",
     "midas": "^2.0.3",
-    "nyc": "^10.1.0",
+    "nyc": "^11.2.1",
     "postcss": "^6.0.3",
     "postcss-scss": "^0.4.0",
-    "standard": "^10.0.3",
-    "standard-changelog": "1.0.2",
+    "standard": "^9.0.0",
+    "standard-changelog": "1.0.3",
     "sugarss": "^0.2.0"
   },
   "files": [
