@@ -21,7 +21,7 @@
     "coveralls": "^2.11.16",
     "jsdoc-to-markdown": "^3.0.0",
     "midas": "^2.0.3",
-    "nyc": "^11.2.1",
+    "nyc": "^12.0.1",
     "postcss": "^6.0.3",
     "postcss-scss": "^0.4.0",
     "standard": "^9.0.0",
