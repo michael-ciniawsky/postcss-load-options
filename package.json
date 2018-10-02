@@ -22,7 +22,7 @@
     "jsdoc-to-markdown": "^3.0.0",
     "midas": "^2.0.3",
     "nyc": "^11.2.1",
-    "postcss": "^6.0.3",
+    "postcss": "^7.0.5",
     "postcss-scss": "^0.4.0",
     "standard": "^9.0.0",
     "standard-changelog": "1.0.3",
